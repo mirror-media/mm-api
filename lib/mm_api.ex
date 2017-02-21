@@ -1,6 +1,11 @@
 defmodule BqMaru.API do
   use Maru.Router
   import Plug.Conn
+
+  plug Plug.Parsers, parsers: [:urlencoded, :json],
+                     pass: ["text/*"],
+                     json_decoder: Poison
+
   namespace :bq do
     desc "Big Query Rest API"
     get do
@@ -12,6 +17,10 @@ defmodule BqMaru.API do
       #conn |> text(current_time)
       conn
       |> send_resp(200, "")
+    end
+    post do
+      IO.inspect conn.params
+      send_resp(conn, 200, "ok :)")
     end
   end     
 end
