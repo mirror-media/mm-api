@@ -17,7 +17,7 @@ defmodule MmApi.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {MmApi, []},
-     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext]]
+     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :redix]]
   end
 
   # Specifies which paths to compile per environment.
@@ -32,6 +32,7 @@ defmodule MmApi.Mixfile do
      {:phoenix_pubsub, "~> 1.0"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:phoenix_live_reload, "~> 1.0"}]
+     {:phoenix_live_reload, "~> 1.0"},
+     {:redix, ">= 0.0.0"}]
   end
 end
