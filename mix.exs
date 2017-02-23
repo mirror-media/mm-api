@@ -33,6 +33,7 @@ defmodule MmApi.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:phoenix_live_reload, "~> 1.0"},
+     {:poolboy, "~> 1.5.1"},
      {:redix, ">= 0.0.0"}]
   end
 end
