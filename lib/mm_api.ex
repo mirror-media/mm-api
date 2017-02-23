@@ -4,12 +4,14 @@ defmodule MmApi do
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
-    import Supervisor.Spec
+    import Supervisor.Spec, warn: false
 
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
       supervisor(MmApi.Endpoint, []),
+      # Add the Redix connection pool to the app as well
+      supervisor(MmApi.RedixPool, []),
       # Start your own worker by calling: MmApi.Worker.start_link(arg1, arg2, arg3)
       # worker(MmApi.Worker, [arg1, arg2, arg3]),
     ]

@@ -28,6 +28,8 @@ defmodule MmApi.Web do
 
       import MmApi.Router.Helpers
       import MmApi.Gettext
+
+      alias MmApi.RedixPool, as: Redis
     end
   end
 
