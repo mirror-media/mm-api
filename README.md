@@ -8,7 +8,7 @@ for the apiv2
 To run the server:
 
  1. Install dependencies and compile: 
- ```bash
+ ```
  mix do deps.get, compile 
  ```
  2. Run the server:  
