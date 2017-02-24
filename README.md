@@ -7,12 +7,31 @@ for the apiv2
 
 To run the server:
 
- 1. Install dependencies: `mix deps.get`
- 2. Start Phoenix server: `mix phoenix.server`
+ 1. Install dependencies and compile: 
+ ```bash
+ mix do deps.get, compile 
+ ```
+ 2. Run the server: 
+ * With developing settings:  
 
-### Request with CURL
+ ```
+ mix phoenix.server
+ ``` 
+ * With production settings:  
+  To view the effect for every change you made in production mode, you have to be compiled explicitly.
+ ```bash
+ MIX_ENV=prod mix compile
+ MIX_ENV=prod mix phoenix.server
+ ```
 
-**Create**
+### Test with cURL request
+
+*Get Content*
+```
+curl -i http://localhost:8080/bq
+```
+
+*Create*
 ```bash
 curl -i -H "Content-Type:application/json" -d '{"name":"Name"}' http://localhost:8080/bq"
 ``` 

@@ -13,8 +13,12 @@ config :mm_api, MmApi.Endpoint,
   check_origin: false,
   watchers: []
 
-
-# Do not include metadata nor timestamps in development logs
+config :mm_api, :redix_args,
+  [
+    {:host , "localhost"},
+    {:port , 6379}
+  ]
+ #Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
 # Set a higher stacktrace during development. Avoid configuring such

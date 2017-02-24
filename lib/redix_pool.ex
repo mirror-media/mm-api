@@ -1,8 +1,7 @@
 defmodule MmApi.RedixPool do
   use Supervisor
-
+  @redix_args Application.get_env(:mm_api, :redix_args)
   #@redis_connection_params host: "localhost"
-  #@redis_connection_params host: "104.199.146.212"
 
   def start_link do
     Supervisor.start_link(__MODULE__, [])
@@ -15,16 +14,10 @@ defmodule MmApi.RedixPool do
       size: 3,
       max_overflow: 2
     ]
-
-    redix_args = [
-      {:host, "104.199.146.212"},
-      {:port, 6379},
-      {:password, "ZgbRu7SP"}
-    ]
   
     children = [
       #:poolboy.child_spec(:redix_poolboy, pool_opts, @redis_connection_params)
-      :poolboy.child_spec(:redix_poolboy, pool_opts, redix_args)
+      :poolboy.child_spec(:redix_poolboy, pool_opts, @redix_args)
     ]
 
     supervise(children, strategy: :one_for_one, name: __MODULE__)
