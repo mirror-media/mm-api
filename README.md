@@ -11,15 +11,19 @@ To run the server:
  ```bash
  mix do deps.get, compile 
  ```
- 2. Run the server: 
- * With developing settings:  
+ 2. Run the server:  
+
+   * With developing settings:  
 
  ```
  mix phoenix.server
- ``` 
- * With production settings:  
-  To view the effect for every change you made in production mode, you have to be compiled explicitly.
- ```bash
+ ```  
+
+   * With production settings:  
+      To view the effect for every change you made in production mode, you have to be compiled explicitly.  
+ 
+
+ ```
  MIX_ENV=prod mix compile
  MIX_ENV=prod mix phoenix.server
  ```
