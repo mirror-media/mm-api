@@ -32,10 +32,15 @@ To run the server:
 
 *Get Content*
 ```
-curl -i http://localhost:8080/bq
+curl -i http://localhost:8080/poll
 ```
 
 *Create*
 ```bash
-curl -i -H "Content-Type:application/json" -d '{"name":"Name"}' http://localhost:8080/bq"
+curl -i -H "Content-Type:application/json" -d '{"name":"Name"}' http://localhost:8080/poll"
 ``` 
+### Test with mix
+
+```bash
+mix Test
+```
