@@ -8,6 +8,8 @@ defmodule MmApi do
 
     # Define workers and child supervisors to be supervised
     children = [
+      # Start the Ecto repository
+      supervisor(PollApi.Repo, []),
       # Start the endpoint when the application starts
       supervisor(MmApi.Endpoint, []),
       # Add the Redix connection pool to the app as well

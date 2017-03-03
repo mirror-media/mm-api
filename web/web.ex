@@ -19,6 +19,11 @@ defmodule MmApi.Web do
   def model do
     quote do
       # Define common model functionality
+      use Ecto.Schema
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
     end
   end
 
@@ -26,10 +31,13 @@ defmodule MmApi.Web do
     quote do
       use Phoenix.Controller
 
-      import MmApi.Router.Helpers
-      import MmApi.Gettext
+      alias PollApi.Repo
+      import Ecto
+      import Ecto.Query
+      
+      import PollApi.Router.Helpers
+      import PollApi.Gettext
 
-      alias MmApi.RedixPool, as: Redis
     end
   end
 

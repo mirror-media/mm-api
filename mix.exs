@@ -16,8 +16,8 @@ defmodule MmApi.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {MmApi, []},
-     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :poolboy, :redix]]
+    [mod: {PollApi, []},
+     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :phoenix_ecto, :mariaex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -29,6 +29,10 @@ defmodule MmApi.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.1"},
+     {:ecto, "~> 2.0"},
+     {:phoenix_ecto, "~> 3.0"},
+     #{:mariaex, "~> 0.6.1", override: true},
+     {:mariaex, ">= 0.8.0"},
      {:phoenix_pubsub, "~> 1.0"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
