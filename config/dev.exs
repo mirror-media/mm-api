@@ -14,12 +14,13 @@ config :mm_api, MmApi.Endpoint,
   watchers: []
 
 config :poll_api, PollApi.Repo,
-  adapter: Ecto.Adapters.MySQL,
-  username: "mmich",
-  password: "m0281",
-  database: "polltest",
-  hostname: "localhost",
-  pool_size: 2
+
+adapter: Ecto.Adapters.MySQL,
+username: "root",
+password: "",
+database: "poll-test",
+hostname: "localhost",
+pool_size: 2
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

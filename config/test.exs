@@ -8,3 +8,11 @@ config :mm_api, MmApi.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :poll_api, PollApi.Repo,
+  adapter: Ecto.Adapters.MySQL,
+  username: "mmich",
+  password: "m0281",
+  database: "poll_test",
+  hostname: "localhost",
+  pool_size: 2
