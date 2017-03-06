@@ -18,7 +18,7 @@ config :poll_api, PollApi.Repo,
 adapter: Ecto.Adapters.MySQL,
 username: "root",
 password: "",
-database: "poll-test",
+database: "polltest",
 hostname: "localhost",
 pool_size: 2
 
