@@ -8,6 +8,7 @@ defmodule MmApi.Router do
   scope "/", PollApi do
     pipe_through :api
 
-    resources "/poll", PollController, only: [:index, :show, :create]
+    #resources "/poll", PollController, only: [:index, :show, :create]
+    resources "/poll", PollController, except: [:new, :edit]
   end
 end
