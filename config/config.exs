@@ -5,10 +5,6 @@
 # is restricted to this project.
 use Mix.Config
 
-# General application configuration
-config :mm_api,
-  ecto_repos: [MmApi.Repo]
-
 # Configures the endpoint
 config :mm_api, MmApi.Endpoint,
   url: [host: "localhost"],
@@ -17,6 +13,10 @@ config :mm_api, MmApi.Endpoint,
   pubsub: [name: MmApi.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# General application configuration
+config :mm_api,
+  ecto_repos: [MmApi.Repo]
+  
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
