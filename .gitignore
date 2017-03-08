@@ -3,3 +3,7 @@
 /deps
 erl_crash.dump
 *.ez
+.DS_Store
+/priv/
+/config/prod.exs
+/config/prod.secret.exs

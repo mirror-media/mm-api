@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+# mm-api
+for the apiv2
 
-You can use the [editor on GitHub](https://github.com/mirror-media/mm-api/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Development
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Up and Running
 
-### Markdown
+To run the server:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+ 1. Install dependencies and compile: 
+ ```
+ mix do deps.get, compile 
+ ```
+ 2. Run the server:  
 
-```markdown
-Syntax highlighted code block
+   * With developing settings:  
 
-# Header 1
-## Header 2
-### Header 3
+ ```
+ mix phoenix.server
+ ```  
 
-- Bulleted
-- List
+   * With production settings:  
+      To view the effect for every change you made in production mode, you have to be compiled explicitly.  
+ 
 
-1. Numbered
-2. List
+ ```
+ MIX_ENV=prod mix compile
+ MIX_ENV=prod mix phoenix.server
+ ```
 
-**Bold** and _Italic_ and `Code` text
+### Test with cURL request
 
-[Link](url) and ![Image](src)
+*Get Content*
+```
+curl -i http://localhost:8080/poll
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+*Create*
+```bash
+curl -i -H "Content-Type:application/json" -d '{"name":"Name"}' http://localhost:8080/poll"
+``` 
+### Test with mix
 
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/mirror-media/mm-api/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```bash
+mix Test
+```
