@@ -6,8 +6,8 @@
 use Mix.Config
 
 # General application configuration
-config :poll_api,
-  ecto_repos: [PollApi.Repo]
+config :mm_api,
+  ecto_repos: [MmApi.Repo]
 
 # Configures the endpoint
 config :mm_api, MmApi.Endpoint,

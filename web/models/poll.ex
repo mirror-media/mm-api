@@ -1,5 +1,5 @@
-defmodule PollApi.Poll do
-  use PollApi.Web, :model
+defmodule MmApi.Poll do
+  use MmApi.Web, :model
 
   schema "polls" do
     field :title, :string

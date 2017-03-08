@@ -5,7 +5,7 @@ defmodule MmApi.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PollApi do
+  scope "/", MmApi do
     pipe_through :api
 
     #resources "/poll", PollController, only: [:index, :show, :create]

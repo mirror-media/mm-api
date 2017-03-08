@@ -1,7 +1,7 @@
-defmodule PollApi.PollControllerTest do
-  use PollApi.ConnCase
+defmodule MmApi.PollControllerTest do
+  use MmApi.ConnCase
 
-  alias PollApi.Poll
+  alias MmApi.Poll
   @valid_attrs %{desired_time: %{day: 17, hour: 14, min: 0, month: 4, sec: 0, year: 2010}, qa_id: "some content", status: "some content", subtitle: "some content", title: "some content"}
   @invalid_attrs %{}
 

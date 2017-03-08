@@ -1,7 +1,7 @@
-defmodule PollApi.PollController do
-  use PollApi.Web, :controller
+defmodule MmApi.PollController do
+  use MmApi.Web, :controller
 
-  alias PollApi.Poll
+  alias MmApi.Poll
 
   def index(conn, _params) do
     polls = Repo.all(Poll)
@@ -20,7 +20,7 @@ defmodule PollApi.PollController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(PollApi.ChangesetView, "error.json", changeset: changeset)
+        |> render(MmApi.ChangesetView, "error.json", changeset: changeset)
     end
   end
 
@@ -40,7 +40,7 @@ defmodule PollApi.PollController do
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render(PollApi.ChangesetView, "error.json", changeset: changeset)
+        |> render(MmApi.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

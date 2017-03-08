@@ -31,12 +31,12 @@ defmodule MmApi.Web do
     quote do
       use Phoenix.Controller
 
-      alias PollApi.Repo
+      alias MmApi.Repo
       import Ecto
       import Ecto.Query
       
-      import PollApi.Router.Helpers
-      import PollApi.Gettext
+      import MmApi.Router.Helpers
+      import MmApi.Gettext
 
     end
   end

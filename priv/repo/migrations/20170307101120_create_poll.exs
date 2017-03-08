@@ -1,4 +1,4 @@
-defmodule PollApi.Repo.Migrations.CreatePoll do
+defmodule MmApi.Repo.Migrations.CreatePoll do
   use Ecto.Migration
 
   def change do

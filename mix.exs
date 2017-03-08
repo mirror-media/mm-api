@@ -16,7 +16,7 @@ defmodule MmApi.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {PollApi, []},
+    [mod: {MmApi, []},
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :phoenix_ecto, :mariaex]]
   end
 
@@ -36,8 +36,6 @@ defmodule MmApi.Mixfile do
      {:phoenix_pubsub, "~> 1.0"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:phoenix_live_reload, "~> 1.0"},
-     {:poolboy, "~> 1.5.1"},
-     {:redix, ">= 0.0.0"}]
+     {:phoenix_live_reload, "~> 1.0"}]
   end
 end

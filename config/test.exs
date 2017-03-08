@@ -9,7 +9,7 @@ config :mm_api, MmApi.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-config :poll_api, PollApi.Repo,
+config :mm_api, MmApi.Repo,
   adapter: Ecto.Adapters.MySQL,
   username: "mmich",
   password: "m0281",
