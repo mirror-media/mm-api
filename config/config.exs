@@ -14,8 +14,8 @@ config :mm_api, MmApi.Endpoint,
            adapter: Phoenix.PubSub.PG2]
 
 # General application configuration
-config :mm_api,
-  ecto_repos: [MmApi.Repo]
+#config :mm_api,
+#  ecto_repos: [MmApi.Repo]
   
 # Configures Elixir's Logger
 config :logger, :console,

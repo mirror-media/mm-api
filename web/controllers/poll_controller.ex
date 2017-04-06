@@ -1,14 +1,23 @@
 defmodule MmApi.PollController do
   use MmApi.Web, :controller
 
-  alias MmApi.Poll
+  #alias MmApi.Poll
 
   def index(conn, _params) do
-    polls = Repo.all(Poll)
-    render(conn, "index.json", polls: polls)
+    IO.puts("index") 
+    #IO.puts( Application.get_env(:mm_api, MmApi.Endpoint)[:redix_args] )
+    {:ok, name} = Redis.command(~w(GET name)) 
+    
+    
+    IO.puts("name: #{name}") 
+    conn |> send_resp(200, name)
+    #polls = Repo.all(Poll)
+    #render(conn, "index.json", polls: polls)
   end
 
+"""
   def create(conn, %{"poll" => poll_params}) do
+
     changeset = Poll.changeset(%Poll{}, poll_params)
 
     case Repo.insert(changeset) do
@@ -22,10 +31,12 @@ defmodule MmApi.PollController do
         |> put_status(:unprocessable_entity)
         |> render(MmApi.ChangesetView, "error.json", changeset: changeset)
     end
-  end
 
+  end
+"""
   def show(conn, %{"id" => qa_id}) do
     #poll = Repo.get!(Poll, id)
+    """
     poll = Repo.get_by!(Poll, qa_id: qa_id)
     render(conn, "show.json", poll: poll)
   end
@@ -42,8 +53,9 @@ defmodule MmApi.PollController do
         |> put_status(:unprocessable_entity)
         |> render(MmApi.ChangesetView, "error.json", changeset: changeset)
     end
+    """
   end
-
+"""
   def delete(conn, %{"id" => qa_id}) do
     poll = Repo.get_by!(Poll, qa_id: qa_id)
 
@@ -53,4 +65,5 @@ defmodule MmApi.PollController do
 
     send_resp(conn, :no_content, "")
   end
+"""
 end
