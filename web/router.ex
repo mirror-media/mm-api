@@ -5,10 +5,16 @@ defmodule MmApi.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/poll/kmt", MmApi do
+  scope "/poll", MmApi do
     pipe_through :api
-
-    resources "/", PollController, only: [:index, :show, :update]
-    #resources "/poll", PollController, except: [:new, :edit]
+    scope "/kmt" do
+      #resources "/", PollController, only: [:index, :show, :update]
+      #resources "/poll", PollController, except: [:new, :edit]
+      get "/", PollController, :index
+      get "/:id", PollController, :show
+      
+      put "/:id/up", PollController, :increase
+      put "/:id/down", PollController, :decrease
+    end
   end
 end

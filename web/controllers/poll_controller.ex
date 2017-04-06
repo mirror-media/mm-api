@@ -5,20 +5,19 @@ defmodule MmApi.PollController do
 
   def index(conn, _params) do
     IO.puts("index") 
-    {:ok, name} = Redis.command(~w(hgetall party:kmt)) 
+    {:ok, response} = Redis.command(~w(HGETALL party:kmt)) 
     
-    name = name |> Enum.chunk(2) |> Enum.into(%{}, fn [key, val] -> {key, val} end)
-    name = for {key, val} <- name, into: %{}, do: {String.to_atom(key), val}
+    response = response |> Enum.chunk(2) |> Enum.into(%{}, fn [key, val] -> {key, val} end)
+    response = for {key, val} <- response, into: %{}, do: {String.to_atom(key), val}
 
     result = %{
-      hong: String.to_integer(name[:hong_plus]) - String.to_integer(name[:hong_minus]),
-      hao: String.to_integer(name[:hao_plus]) - String.to_integer(name[:hao_minus]),
-      wu: String.to_integer(name[:wu_plus]) - String.to_integer(name[:wu_minus]),
-      han: String.to_integer(name[:han_plus]) - String.to_integer(name[:han_minus]),
-      zhan: String.to_integer(name[:zhan_plus]) - String.to_integer(name[:zhan_minus]),
-      pan: String.to_integer(name[:pan_plus]) - String.to_integer(name[:pan_minus]),
+      hong: String.to_integer(response[:hong_plus]) - String.to_integer(response[:hong_minus]),
+      hao: String.to_integer(response[:hao_plus]) - String.to_integer(response[:hao_minus]),
+      wu: String.to_integer(response[:wu_plus]) - String.to_integer(response[:wu_minus]),
+      han: String.to_integer(response[:han_plus]) - String.to_integer(response[:han_minus]),
+      zhan: String.to_integer(response[:zhan_plus]) - String.to_integer(response[:zhan_minus]),
+      pan: String.to_integer(response[:pan_plus]) - String.to_integer(response[:pan_minus]),
     }
-    #IO.puts(name[:hongplus])
     #conn |> send_resp(200, result[:hongplus])
     #polls = Repo.all(Poll)
     #render(conn, "index.json", polls: polls)
@@ -44,8 +43,12 @@ defmodule MmApi.PollController do
 
   end
 """
-  def show(conn, %{"id" => qa_id}) do
-    IO.puts("id: #{qa_id}")
+  def show(conn, %{"id" => id}) do
+    IO.puts("id: #{id}")
+    {:ok, response} = Redis.command(~w(HMGET party:kmt #{id}_plus #{id}_minus))
+    [plus, minus] = response
+    result = %{String.to_atom(id) => String.to_integer(plus) - String.to_integer(minus)}
+
     """
     #poll = Repo.get!(Poll, id)
     
@@ -66,7 +69,28 @@ defmodule MmApi.PollController do
         |> render(MmApi.ChangesetView, "error.json", changeset: changeset)
     end
     """
+    #conn |> send_resp(200, Integer.to_string(result))
+    render(conn, "index.json", polls: result)
   end
+
+  def increase(conn, %{"id" => id}) do
+    IO.puts("id: #{id}")
+    {:ok, response} = Redis.command(~w(HINCRBY party:kmt #{id}_plus 1))
+    {:ok, minus_now} = Redis.command(~w(HGET party:kmt #{id}_minus)) 
+    minus = String.to_integer(minus_now)
+    result = %{"#{id}" => response - minus}
+    render(conn, "index.json", polls: result)
+  end
+
+  def decrease(conn, %{"id" => id}) do
+    IO.puts("id: #{id}")
+    {:ok, response} = Redis.command(~w(HINCRBY party:kmt #{id}_minus 1))
+    {:ok, plus_now} = Redis.command(~w(HGET party:kmt #{id}_plus)) 
+    plus = String.to_integer(plus_now)
+    result = %{"#{id}" => plus - response}
+    render(conn, "index.json", polls: result)
+  end
+
 """
   def delete(conn, %{"id" => qa_id}) do
     poll = Repo.get_by!(Poll, qa_id: qa_id)
