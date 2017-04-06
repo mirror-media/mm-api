@@ -1,6 +1,9 @@
-#defmodule MmApi.PollView do
-#  use MmApi.Web, :view
-
+defmodule MmApi.PollView do
+  use MmApi.Web, :view
+  
+  def render("index.json", %{polls: polls}) do
+    %{result: polls}
+  end
 #  def render("index.json", %{polls: polls}) do
 #    %{data: render_many(polls, MmApi.PollView, "poll.json")}
 #  end
@@ -17,4 +20,4 @@
 #      status: poll.status,
 #      desired_time: poll.desired_time}
 #  end
-#end
+end
