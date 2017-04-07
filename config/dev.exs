@@ -13,15 +13,19 @@ config :mm_api, MmApi.Endpoint,
   check_origin: false,
   watchers: []
 
-config :mm_api, MmApi.Repo,
-  adapter: Ecto.Adapters.MySQL,
-  username: "root",
-  password: "",
-  database: "polltest",
-  hostname: "localhost",
-  pool_size: 2
+config :mm_api, MmApi.RedixPool,
+  read_args: [ 
+    {:host, "localhost"}, 
+    {:port, 6379}
+  ],
+  
+  write_args: [ 
+    {:host, "localhost"}, 
+    {:port, 6379}
+  ]
 
-# Do not include metadata nor timestamps in development logs
+ #Do not include metadata nor timestamps in development logs
+
 config :logger, :console, format: "[$level] $message\n"
 
 # Set a higher stacktrace during development. Avoid configuring such
