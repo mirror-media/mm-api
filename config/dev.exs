@@ -14,10 +14,15 @@ config :mm_api, MmApi.Endpoint,
   watchers: []
 
 config :mm_api, MmApi.RedixPool,
-  redix_args: [ 
+  read_args: [ 
     {:host, "localhost"}, 
     {:port, 6379}
-  ] 
+  ],
+  
+  write_args: [ 
+    {:host, "localhost"}, 
+    {:port, 6379}
+  ]
 
  #Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
