@@ -24,6 +24,7 @@ defmodule MmApi.Web do
       #import Ecto
       #import Ecto.Changeset
       #import Ecto.Query
+
     end
   end
 
@@ -37,6 +38,7 @@ defmodule MmApi.Web do
       #import Ecto.Query
       
       import MmApi.Router.Helpers
+
     end
   end
 
@@ -49,6 +51,7 @@ defmodule MmApi.Web do
 
       import MmApi.Router.Helpers
       import MmApi.ErrorHelpers
+
     end
   end
 
@@ -61,6 +64,7 @@ defmodule MmApi.Web do
   def channel do
     quote do
       use Phoenix.Channel
+
     end
   end
 

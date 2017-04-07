@@ -7,7 +7,7 @@ use Mix.Config
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
 config :mm_api, MmApi.Endpoint,
-  http: [port: 8080],
+  http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
@@ -25,6 +25,7 @@ config :mm_api, MmApi.RedixPool,
   ]
 
  #Do not include metadata nor timestamps in development logs
+
 config :logger, :console, format: "[$level] $message\n"
 
 # Set a higher stacktrace during development. Avoid configuring such

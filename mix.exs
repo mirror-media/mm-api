@@ -19,6 +19,7 @@ defmodule MmApi.Mixfile do
     [mod: {MmApi, []},
      #applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :phoenix_ecto, :redix, :poolboy]]
      applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :redix, :poolboy]]
+
   end
 
   # Specifies which paths to compile per environment.
