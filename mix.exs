@@ -18,7 +18,7 @@ defmodule MmApi.Mixfile do
   def application do
     [mod: {MmApi, []},
      #applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :phoenix_ecto, :redix, :poolboy]]
-     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :redix, :poolboy]]
+     applications: [:corsica, :phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :redix, :poolboy]]
 
   end
 
@@ -31,6 +31,7 @@ defmodule MmApi.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.1"},
+     {:corsica, "~> 0.5"},
      #{:ecto, "~> 2.0"},
      #{:phoenix_ecto, "~> 3.0"},
      {:phoenix_pubsub, "~> 1.0"},

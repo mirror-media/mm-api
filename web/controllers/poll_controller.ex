@@ -11,7 +11,7 @@ defmodule MmApi.PollController do
     response = for {key, val} <- response, into: %{}, do: {String.to_atom(key), val}
 
     result = %{
-      hong: String.to_integer(response[:hong_up]) - String.to_integer(response[:hong_down]),
+      hung: String.to_integer(response[:hung_up]) - String.to_integer(response[:hung_down]),
       hao: String.to_integer(response[:hao_up]) - String.to_integer(response[:hao_down]),
       wu: String.to_integer(response[:wu_up]) - String.to_integer(response[:wu_down]),
       han: String.to_integer(response[:han_up]) - String.to_integer(response[:han_down]),
