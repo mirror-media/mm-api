@@ -39,7 +39,9 @@ defmodule MmApi.Endpoint do
     signing_salt: "L0Pslitd"
   
   # Allow CORS
-  plug Corsica, origins: "*"
+  plug Corsica,
+    origins: "*",
+    allow_methods: ["HEAD", "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 
   plug MmApi.Router
 end
