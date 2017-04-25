@@ -13,9 +13,15 @@ config :mm_api, MmApi.Endpoint,
   pubsub: [name: MmApi.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+config :mm_api, MmApi.RedixPool,
+  redix_opts: [ 
+    {:worker_module, Redix}, 
+    {:size, 2}, 
+    {:max_overflow, 2}
+  ]
 # General application configuration
-config :mm_api,
-  ecto_repos: [MmApi.Repo]
+#config :mm_api,
+#  ecto_repos: [MmApi.Repo]
   
 # Configures Elixir's Logger
 config :logger, :console,
