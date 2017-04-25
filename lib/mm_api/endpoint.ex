@@ -37,6 +37,9 @@ defmodule MmApi.Endpoint do
     store: :cookie,
     key: "_mm_api_key",
     signing_salt: "L0Pslitd"
+  
+  # Allow CORS
+  plug Corsica, origins: "*"
 
   plug MmApi.Router
 end
