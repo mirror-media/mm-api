@@ -41,6 +41,7 @@ defmodule MmApi.Endpoint do
   # Allow CORS
   plug Corsica,
     origins: "*",
+    allow_headers: ["accept"],
     allow_methods: ["HEAD", "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 
   plug MmApi.Router
