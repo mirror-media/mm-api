@@ -176,7 +176,6 @@ The last and most important step, you have to create pod for GKE.
   ```
 
 If successful, your pods is running. Check it with:
-
   ```bash
   kubectl describe pod [YOUR POD NAME]
   ```
