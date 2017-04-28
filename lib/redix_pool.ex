@@ -13,7 +13,7 @@ defmodule MmApi.RedixPool do
     # Get poolboy setting
     read_opts = Application.get_env(:mm_api, MmApi.RedixPool)[:redix_opts]
     write_opts = Application.get_env(:mm_api, MmApi.RedixPool)[:redix_opts]
-    read_opts = read_opts++ [name: {:local, :read_pool}]
+    read_opts = read_opts ++ [name: {:local, :read_pool}]
     write_opts = write_opts ++ [name: {:local, :write_pool}]
 
     # Get redix host setting
