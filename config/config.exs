@@ -16,8 +16,8 @@ config :mm_api, MmApi.Endpoint,
 config :mm_api, MmApi.RedixPool,
   redix_opts: [ 
     {:worker_module, Redix}, 
-    {:size, 2}, 
-    {:max_overflow, 2}
+    {:size, 20}, 
+    {:max_overflow, 5}
   ]
 # General application configuration
 #config :mm_api,
